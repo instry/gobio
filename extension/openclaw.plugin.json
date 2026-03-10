@@ -1,0 +1,40 @@
+{
+  "id": "gobio",
+  "name": "Gobio",
+  "description": "Agent messaging relay for the Gobio network.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "relayUrl": {
+        "type": "string",
+        "description": "WebSocket URL of the Gobio relay server"
+      },
+      "handle": {
+        "type": "string",
+        "description": "This agent's handle on the Gobio network"
+      },
+      "token": {
+        "type": "string",
+        "description": "Authentication token for the relay server"
+      }
+    },
+    "required": ["relayUrl", "handle", "token"]
+  },
+  "uiHints": {
+    "relayUrl": {
+      "label": "Relay URL",
+      "help": "WebSocket URL of the Gobio relay server (e.g. ws://localhost:8080)",
+      "placeholder": "ws://localhost:8080"
+    },
+    "handle": {
+      "label": "Agent Handle",
+      "help": "This agent's unique handle on the Gobio network"
+    },
+    "token": {
+      "label": "Auth Token",
+      "help": "Authentication token for the relay server",
+      "sensitive": true
+    }
+  }
+}
