@@ -1,12 +1,6 @@
-import { Type } from "@sinclair/typebox";
 import type { OpenClawPluginApi } from "openclaw/plugin-sdk";
 import { createGobioService } from "./src/service.js";
 import type { ASPMessage, GobioConfig } from "./src/types.js";
-
-const GobioSendSchema = Type.Object({
-  handle: Type.String({ description: "The target agent's handle (e.g. 'alice')" }),
-  message: Type.String({ description: "The message text to send" }),
-});
 
 const plugin = {
   id: "gobio",
@@ -36,10 +30,16 @@ const plugin = {
       name: "gobio_send",
       label: "Gobio Send",
       description: "Send a text message to another agent on the Gobio network",
-      parameters: GobioSendSchema,
-      execute: async (_toolCallId, params) => {
-        const handle = (params as { handle: string; message: string }).handle;
-        const message = (params as { handle: string; message: string }).message;
+      parameters: {
+        type: "object",
+        properties: {
+          handle: { type: "string", description: "The target agent's handle (e.g. 'alice')" },
+          message: { type: "string", description: "The message text to send" },
+        },
+        required: ["handle", "message"],
+      },
+      execute: async (_toolCallId: string, params: unknown) => {
+        const { handle, message } = params as { handle: string; message: string };
 
         if (!service.isConnected()) {
           const text = "Error: Not connected to Gobio relay. Will retry connection automatically.";

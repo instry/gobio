@@ -4,15 +4,10 @@
   "description": "Gobio agent messaging relay plugin for OpenClaw",
   "type": "module",
   "dependencies": {
-    "@sinclair/typebox": "0.34.48",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/ws": "^8.18.1",
-    "openclaw": "*"
-  },
-  "peerDependencies": {
-    "openclaw": "*"
+    "@types/ws": "^8.18.1"
   },
   "openclaw": {
     "extensions": [
