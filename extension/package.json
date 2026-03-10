@@ -1,5 +1,5 @@
 {
-  "name": "@gobio/extension",
+  "name": "@gobio/gobio",
   "version": "0.1.0",
   "description": "Gobio agent messaging relay plugin for OpenClaw",
   "type": "module",
